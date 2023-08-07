@@ -3,7 +3,22 @@
     padding: 8px 36px;
     border-radius: 6px;
     cursor: pointer;
+    background-color: var(--elements-color);
 }
+
+body {
+    --background-color: hsl(0, 0%, 98%);
+    --text-color: hsl(200, 15%, 8%);
+    --elements-color: hsl(0, 0%, 100%);
+}
+
+body.dark {
+    --background-color: hsl(207, 26%, 17%);;
+    --text-color: hsl(0, 0%, 100%);
+    --elements-color: hsl(209, 23%, 22%);
+}
+
+
 
 main {
     max-width: 1200px;  
@@ -13,6 +28,10 @@ main {
     align-items: center;
     margin-bottom: 48px;
     
+}
+
+.mode-control {
+    cursor: pointer;
 }
 
 .country-details {
@@ -64,6 +83,7 @@ main {
     border-radius: 2px;
     font-size: 14px;
     flex-wrap: wrap;
+    background-color: var(--elements-color);
 } 
 
 .border-countries a:hover {

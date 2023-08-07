@@ -3,23 +3,34 @@ const countriesContainer = document.querySelector(".countries-container")
 
 const filterByRegion = document.querySelector(".filter-by-region")
 
+const searchInput = document.querySelector(".search-container input")
+
+const themeChanger = document.querySelector(".theme-changer")
+
+const modeBtn = document.getElementById("mode-btn")
+
+
+
+let allCountriesData;
+
 fetch("https://restcountries.com/v3.1/all")
     .then((result) => result.json())
-    .then(renderCountries)
+    .then((data) => {
+        renderCountries(data)
+        allCountriesData = data; 
+    })
 
 
 filterByRegion.addEventListener('change', (e) => {
-        console.log(e.target.value);
-        fetch(`https://restcountries.com/v3.1/region/${e.target.value}`)
-            .then((result) => result.json())
-            .then(renderCountries)
+    fetch(`https://restcountries.com/v3.1/region/${e.target.value}`)
+        .then((result) => result.json())
+        .then(renderCountries)
 })
 
     
 function renderCountries(data) {  
         countriesContainer.innerHTML = ""
         data.forEach((country) => {
-            console.log(country)
             const countryCard = document.createElement('a')
             countryCard.classList.add("country-card")
             countryCard.href = `./country.html?name=${country.name.common}`
@@ -40,3 +51,24 @@ function renderCountries(data) {
 
     
 }
+
+
+searchInput.addEventListener("input", (e) => {
+    const filteredCountries = allCountriesData.filter((country) => country.name.common.toLowerCase().includes(e.target.value.toLowerCase()))
+    renderCountries(filteredCountries)
+})
+
+
+modeBtn.addEventListener("click", (e) => {
+    document.body.classList.toggle("dark")
+    localStorage.setItem("mode", document.body.classList);
+    localStorage.setItem("checked", modeBtn.checked)
+})
+
+if(localStorage.getItem("mode") != '') {
+    document.body.classList.add(localStorage.getItem("mode"));
+    modeBtn.checked = localStorage.getItem("checked");
+}
+
+
+

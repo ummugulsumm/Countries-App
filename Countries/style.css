@@ -4,15 +4,27 @@
 }
 
 body {
+    --background-color: hsl(0, 0%, 98%);
+    --text-color: hsl(200, 15%, 8%);
+    --elements-color: hsl(0, 0%, 100%);
     margin: 0;
     font-family: "Nunito Sans", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: 100ms all;
+}
+
+body.dark {
+    --background-color: hsl(207, 26%, 17%);;
+    --text-color: hsl(0, 0%, 100%);
+    --elements-color: hsl(209, 23%, 22%);
 }
 
 main {
     padding: 24px;  
 }
 
-a{
+a {
     text-decoration-line: none;
     color: inherit;
 }
@@ -20,6 +32,7 @@ a{
 .header-container{
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     padding-inline: 24px;
+    background-color: var(--elements-color)
 }
 
 .header-content {
@@ -35,6 +48,26 @@ a{
     font-weight: 800;
 }
 
+.mode-control {
+    cursor: pointer;
+}
+
+.mode-control input{
+    position: absolute;
+    opacity: 0;
+}
+
+.mode-control span:nth-of-type(2) {
+    display: none;
+}
+
+.mode-control input:checked + span {
+    display: none;
+}
+
+.mode-control input:checked + span + span {
+    display: inline-block;
+}
 
 .search-filter-container {
     max-width: 1200px;
@@ -57,7 +90,11 @@ a{
     display: block;
     font-size: 14px;
     font-weight: 400;
+    background-color: var(--elements-color);
+    color: var(--text-color);
+
 }
+
 
 .search-container {
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
@@ -71,6 +108,9 @@ a{
     border-radius: 4px;
     color: #999;
     overflow: hidden;
+    background-color: var(--elements-color);
+    color: var(--text-color);
+
 }
 
 .search-container input {
@@ -78,10 +118,13 @@ a{
     outline: none;
     padding: 12px;
     width: 100%;
+    background-color: var(--elements-color);
+    color: var(--text-color);
+
 }
 
 .search-container input::placeholder {
-    color: #999;
+    color: hsl(0, 0%, 52%);
 }
 
 .countries-container {
@@ -106,6 +149,7 @@ a{
     transition: all 0.2s ease-in-out;
     font-size: 14px;
     overflow: hidden;
+    background-color: var(--elements-color);
     
 }
 
@@ -126,6 +170,8 @@ a{
 }
 
 
+
+
 .card-text p {
     margin-block: 8px;
 }
@@ -138,7 +184,6 @@ a{
 
 .country-card img {
 	width: 100%;
-    border: 1px solid #ddd;
 }
  
 @media(max-width: 768px) {
@@ -147,11 +192,11 @@ a{
     
     }
     .title {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .header-content p {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .search-filter-container {

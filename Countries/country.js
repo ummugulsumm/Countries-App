@@ -11,6 +11,8 @@ const currencies = document.querySelector("#currencies")
 const languages = document.querySelector("#languages")
 const borderCountries = document.querySelector(".border-countries")
 
+const modeBtn = document.getElementById("mode-btn")
+
 
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
     .then((result) => result.json())
@@ -67,4 +69,17 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
 
 
 })
+
+
+modeBtn.addEventListener("click", (e) => {
+    document.body.classList.toggle("dark")
+    localStorage.setItem("mode", document.body.classList);
+    localStorage.setItem("checked", modeBtn.checked)
+
+})
+
+if(localStorage.getItem("mode") != '') {
+    document.body.classList.add(localStorage.getItem("mode"));
+    modeBtn.checked = localStorage.getItem("checked");
+}
 
