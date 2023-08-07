@@ -18,8 +18,6 @@ body.dark {
     --elements-color: hsl(209, 23%, 22%);
 }
 
-
-
 main {
     max-width: 1200px;  
     margin-inline: auto;
@@ -27,7 +25,6 @@ main {
     padding-inline: 24px;
     align-items: center;
     margin-bottom: 48px;
-    
 }
 
 .mode-control {
@@ -40,7 +37,6 @@ main {
     align-items: center;
     gap: 88px;
     max-width: 1200px;
-    
 }
 
 .country-details img {
@@ -68,7 +64,6 @@ main {
     flex-wrap: wrap;
 }
 
-
 .border-countries {
     margin-top: 64px;
     display: flex;
@@ -91,7 +86,6 @@ main {
     box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-
 @media(max-width: 1050px) {
     .country-details {
         flex-direction: column;
@@ -104,8 +98,6 @@ main {
     }
 
     .details-text {
-        max-height: unset;
-        
+        max-height: unset; 
     }
-    
 }
