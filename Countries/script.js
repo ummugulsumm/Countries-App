@@ -62,12 +62,11 @@ searchInput.addEventListener("input", (e) => {
 modeBtn.addEventListener("click", (e) => {
     document.body.classList.toggle("dark")
     localStorage.setItem("mode", document.body.classList);
-    localStorage.setItem("checked", modeBtn.checked)
 })
 
-if(localStorage.getItem("mode") != '') {
+if(localStorage.getItem("mode") != '' && localStorage.getItem("mode") != null) {
     document.body.classList.add(localStorage.getItem("mode"));
-    modeBtn.checked = localStorage.getItem("checked");
+    modeBtn.checked = true;
 }
 
 
